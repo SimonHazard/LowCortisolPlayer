@@ -34,6 +34,19 @@ html.lcp-enabled {
   background: var(--lcp-page-bg) !important;
 }
 
+html.lcp-enabled body * {
+  pointer-events: none !important;
+}
+
+html.lcp-enabled body [data-lcp-player],
+html.lcp-enabled body [data-lcp-player] *,
+html.lcp-enabled body [data-lcp-extension-ui],
+html.lcp-enabled body [data-lcp-extension-ui] *,
+html.lcp-enabled body [data-lcp-extension-surface],
+html.lcp-enabled body [data-lcp-extension-surface] * {
+  pointer-events: auto !important;
+}
+
 html.lcp-enabled [data-lcp-player] {
   position: relative !important;
   z-index: 1;

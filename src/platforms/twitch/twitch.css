@@ -7,6 +7,16 @@ html[data-lcp-platform="twitch"].lcp-enabled #root {
   background: var(--lcp-page-bg) !important;
 }
 
+html[data-lcp-platform="twitch"].lcp-enabled
+  body
+  :is([data-a-target="right-column-chat-bar"], .right-column--beside, .chat-shell),
+html[data-lcp-platform="twitch"].lcp-enabled
+  body
+  :is([data-a-target="right-column-chat-bar"], .right-column--beside, .chat-shell)
+  * {
+  pointer-events: auto !important;
+}
+
 html[data-lcp-platform="twitch"].lcp-focus.lcp-cleanup .top-nav,
 html[data-lcp-platform="twitch"].lcp-focus.lcp-cleanup .channel-root__player,
 html[data-lcp-platform="twitch"].lcp-focus.lcp-cleanup .channel-root__info,

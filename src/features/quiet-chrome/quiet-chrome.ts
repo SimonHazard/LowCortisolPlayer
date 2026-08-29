@@ -9,6 +9,8 @@ const FOCUSABLE_SELECTOR = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(',');
 const COMMENTS_ATTRIBUTES = ['role', 'aria-modal', 'aria-label', 'aria-hidden'] as const;
+const COMMENTS_EXTENSION_ATTRIBUTE = 'data-lcp-extension-surface';
+const EXTENSION_UI_ATTRIBUTE = 'data-lcp-extension-ui';
 
 type CommentsSnapshot = {
   attributes: Record<(typeof COMMENTS_ATTRIBUTES)[number], string | null>;
@@ -103,6 +105,7 @@ export class QuietChrome {
       this.#trigger = document.createElement('button');
       this.#trigger.type = 'button';
       this.#trigger.className = 'lcp-comments-trigger';
+      this.#trigger.setAttribute(EXTENSION_UI_ATTRIBUTE, '');
       this.#trigger.setAttribute('aria-label', 'Ouvrir les commentaires');
       this.#trigger.setAttribute('aria-expanded', 'false');
       this.#trigger.innerHTML = '<span aria-hidden="true"><i></i><i></i><i></i></span>';
@@ -117,6 +120,7 @@ export class QuietChrome {
       this.#backdrop.type = 'button';
       this.#backdrop.tabIndex = -1;
       this.#backdrop.className = 'lcp-comments-backdrop';
+      this.#backdrop.setAttribute(EXTENSION_UI_ATTRIBUTE, '');
       this.#backdrop.setAttribute('aria-label', 'Fermer les commentaires');
       this.#backdrop.addEventListener('click', () => this.#closeComments(), {
         signal: this.#listeners.signal,
@@ -127,6 +131,7 @@ export class QuietChrome {
     if (!this.#toolbar) {
       this.#toolbar = document.createElement('div');
       this.#toolbar.className = 'lcp-comments-toolbar';
+      this.#toolbar.setAttribute(EXTENSION_UI_ATTRIBUTE, '');
       const heading = document.createElement('strong');
       heading.textContent = 'Commentaires';
       const close = document.createElement('button');
@@ -158,6 +163,7 @@ export class QuietChrome {
       element: comments,
       inert: comments.inert,
     };
+    comments.setAttribute(COMMENTS_EXTENSION_ATTRIBUTE, '');
     comments.classList.add('lcp-comments-sheet-ready');
     comments.setAttribute('role', 'dialog');
     comments.setAttribute('aria-modal', 'true');
@@ -252,6 +258,7 @@ export class QuietChrome {
   }
 
   #restoreComments(comments: HTMLElement): void {
+    comments.removeAttribute(COMMENTS_EXTENSION_ATTRIBUTE);
     comments.classList.remove('lcp-comments-sheet-ready');
     const snapshot = this.#commentsSnapshot?.element === comments ? this.#commentsSnapshot : null;
     for (const attribute of COMMENTS_ATTRIBUTES) {

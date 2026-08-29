@@ -85,7 +85,7 @@ html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player {
   margin: 0 auto !important;
 }
 
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy video.video-stream {
+html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy [data-lcp-player] video {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
