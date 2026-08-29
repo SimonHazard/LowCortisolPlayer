@@ -66,7 +66,11 @@ export class PlayerController {
     const video = this.#adapter.getVideoElement();
     const player = this.#adapter.getPlayerContainer();
     if (video && player) {
-      this.#ambientMode.mount(video, player);
+      if (this.#adapter.platform === 'twitch') {
+        this.#ambientMode.mount(video, player);
+      } else {
+        this.#ambientMode.destroy();
+      }
     } else {
       this.#ambientMode.destroy();
     }

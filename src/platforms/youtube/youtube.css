@@ -66,25 +66,6 @@ html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #primary-inner {
   max-width: none !important;
 }
 
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player,
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player-container-outer,
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player-container-inner,
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player-container,
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy ytd-player,
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy ytd-player > #container,
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy [data-lcp-player] {
-  width: 100% !important;
-  max-width: none !important;
-  height: min(calc(100dvh - 56px), 880px) !important;
-  max-height: none !important;
-}
-
-html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player {
-  position: relative !important;
-  inset: auto !important;
-  margin: 0 auto !important;
-}
-
 html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #below {
   width: min(1120px, 100%) !important;
   height: 0 !important;
@@ -173,16 +154,6 @@ html[data-lcp-platform="youtube"].lcp-youtube-hide-recommendations ytd-watch-fle
 
   html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #primary {
     padding-inline: 8px !important;
-  }
-
-  html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player,
-  html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player-container-outer,
-  html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player-container-inner,
-  html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy #player-container,
-  html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy ytd-player,
-  html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy ytd-player > #container,
-  html[data-lcp-platform="youtube"].lcp-focus ytd-watch-flexy [data-lcp-player] {
-    height: min(calc(100dvh - 72px), calc((100vw - 16px) * 0.5625)) !important;
   }
 }
 

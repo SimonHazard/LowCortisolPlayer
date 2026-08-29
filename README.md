@@ -12,7 +12,7 @@ LowCortisolPlayer is a Chrome extension that makes YouTube and Twitch feel calme
 - Centered now-playing title with the native metadata and action strip removed
 - Native YouTube comments moved into an accessible, scrollable bottom sheet
 - Soft player with a consistent 16 px corner radius
-- Low-frequency ambient color sampling from the current video
+- Low-frequency ambient color sampling from the current Twitch video
 - YouTube cleanup for recommendations, comments, and identifiable Shorts surfaces
 - Twitch cleanup with the left sidebar removed and native chat preserved in a soft right column
 - Compact popup with one clear decision: active or disabled
@@ -89,7 +89,7 @@ src/
   ui/                    Shared extension-owned React UI
 ```
 
-The content script listens to WXT's SPA location-change event and observes only the nearest useful player container after discovery. Ambient sampling uses a `12 × 7` canvas every 900 ms while the video is playing, stops when the tab is hidden or the feature is disabled, and keeps a neutral fallback if cross-origin canvas reads are unavailable.
+The content script listens to WXT's SPA location-change event and observes only the nearest useful player container after discovery. Ambient sampling uses a `12 × 7` canvas every 900 ms while a Twitch video is playing, stops when the tab is hidden or the feature is disabled, and keeps a neutral fallback if cross-origin canvas reads are unavailable. YouTube's native player subtree is left untouched so its renderer and controls remain reliable.
 
 ## Manual verification
 
@@ -97,6 +97,6 @@ After loading the unpacked build, verify against live pages:
 
 - YouTube: direct watch URL, SPA navigation between videos, fullscreen, resize, comments sheet, disable/re-enable.
 - Twitch: channel navigation, fullscreen, resize, right chat column, native chat scrolling, disable/re-enable.
-- Both: verify Solarized in system light and dark modes, confirm the cinema stage stays centered, and check that native controls and keyboard shortcuts remain intact with no duplicated ambient layer.
+- Both: verify Solarized in system light and dark modes, confirm the cinema stage stays centered, and check that native controls and keyboard shortcuts remain intact.
 
 YouTube and Twitch change their DOM over time. Platform selectors are intentionally centralized in `src/platforms/youtube/` and `src/platforms/twitch/` so any live-site adjustment stays isolated.

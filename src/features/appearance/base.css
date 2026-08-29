@@ -24,12 +24,6 @@
   }
 }
 
-html.lcp-enabled [data-lcp-player-host] {
-  position: relative !important;
-  isolation: isolate;
-  background: var(--lcp-player-stage) !important;
-}
-
 html.lcp-enabled {
   background: var(--lcp-page-bg) !important;
 }
@@ -40,29 +34,15 @@ html.lcp-enabled body * {
 
 html.lcp-enabled body [data-lcp-player],
 html.lcp-enabled body [data-lcp-player] *,
+html.lcp-enabled body #movie_player,
+html.lcp-enabled body #movie_player *,
+html.lcp-enabled body .html5-video-player,
+html.lcp-enabled body .html5-video-player *,
 html.lcp-enabled body [data-lcp-extension-ui],
 html.lcp-enabled body [data-lcp-extension-ui] *,
 html.lcp-enabled body [data-lcp-extension-surface],
 html.lcp-enabled body [data-lcp-extension-surface] * {
   pointer-events: auto !important;
-}
-
-html.lcp-enabled [data-lcp-player] {
-  position: relative !important;
-  z-index: 1;
-  transition:
-    border-radius var(--lcp-duration-normal) var(--lcp-ease-standard),
-    box-shadow var(--lcp-duration-normal) var(--lcp-ease-standard);
-}
-
-html.lcp-enabled.lcp-soft [data-lcp-player] {
-  overflow: hidden;
-  border-radius: var(--lcp-player-radius, 16px) !important;
-  box-shadow: var(--lcp-shadow);
-}
-
-html.lcp-enabled.lcp-soft [data-lcp-player-host] {
-  border-radius: var(--lcp-player-radius, 16px) !important;
 }
 
 html.lcp-enabled [data-lcp-ambient-host] > .lcp-ambient-layer {
@@ -85,15 +65,7 @@ html.lcp-enabled:has(:fullscreen) .lcp-ambient-layer {
   display: none !important;
 }
 
-:fullscreen [data-lcp-player],
-[data-lcp-player]:fullscreen,
-html.lcp-enabled:has(:fullscreen) [data-lcp-player] {
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html.lcp-enabled [data-lcp-player],
   html.lcp-enabled [data-lcp-ambient-host] > .lcp-ambient-layer {
     transition-duration: 0ms;
   }

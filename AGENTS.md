@@ -37,6 +37,7 @@ LowCortisolPlayer is an attention-preserving viewing layer for YouTube and Twitc
 
 - Keep platform selectors isolated under `src/platforms/youtube/` and `src/platforms/twitch/`.
 - Keep DOM changes idempotent and fully reversible when the extension is disabled.
+- Leave YouTube's native player subtree and rendering styles untouched; ambient sampling is currently limited to Twitch.
 - Prefer strict TypeScript, semantic HTML, narrow permissions, and local-only behavior.
 - Avoid telemetry, accounts, remote APIs, and broad host permissions unless the product brief explicitly changes.
 - Run `pnpm check` and `pnpm build` after product changes.
