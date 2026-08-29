@@ -1,0 +1,94 @@
+:root {
+  --lcp-page-bg: #fdf6e3;
+  --lcp-page-mantle: #eee8d5;
+  --lcp-page-crust: #e4dcc7;
+  --lcp-page-text: #586e75;
+  --lcp-page-accent: #268bd2;
+  --lcp-player-stage: #001f27;
+  --lcp-player-text: #eee8d5;
+  --lcp-shadow: 0 24px 72px rgb(0 43 54 / 18%), 0 3px 14px rgb(0 43 54 / 12%);
+  --lcp-duration-fast: 140ms;
+  --lcp-duration-normal: 220ms;
+  --lcp-ease-standard: cubic-bezier(0.23, 1, 0.32, 1);
+  --lcp-ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lcp-page-bg: #002b36;
+    --lcp-page-mantle: #073642;
+    --lcp-page-crust: #001f27;
+    --lcp-page-text: #93a1a1;
+    --lcp-page-accent: #2aa198;
+    --lcp-shadow: 0 24px 72px rgb(0 31 39 / 46%), 0 3px 14px rgb(0 31 39 / 28%);
+  }
+}
+
+html.lcp-enabled [data-lcp-player-host] {
+  position: relative !important;
+  isolation: isolate;
+  background: var(--lcp-player-stage) !important;
+}
+
+html.lcp-enabled {
+  background: var(--lcp-page-bg) !important;
+}
+
+html.lcp-enabled [data-lcp-player] {
+  position: relative !important;
+  z-index: 1;
+  transition:
+    border-radius var(--lcp-duration-normal) var(--lcp-ease-standard),
+    box-shadow var(--lcp-duration-normal) var(--lcp-ease-standard);
+}
+
+html.lcp-enabled.lcp-soft [data-lcp-player] {
+  overflow: hidden;
+  border-radius: var(--lcp-player-radius, 16px) !important;
+  box-shadow: var(--lcp-shadow);
+}
+
+html.lcp-enabled.lcp-soft [data-lcp-player-host] {
+  border-radius: var(--lcp-player-radius, 16px) !important;
+}
+
+html.lcp-enabled [data-lcp-ambient-host] > .lcp-ambient-layer {
+  position: absolute;
+  z-index: 0;
+  inset: 7% 6%;
+  pointer-events: none;
+  border-radius: calc(var(--lcp-player-radius, 16px) * 1.6);
+  background: rgb(var(--lcp-ambient-color, 111 131 140) / 72%);
+  opacity: var(--lcp-ambient-intensity, 0.42);
+  filter: blur(72px) saturate(112%);
+  transform: scale(1.02);
+  transition:
+    background-color 700ms linear,
+    opacity var(--lcp-duration-normal) var(--lcp-ease-standard);
+}
+
+:fullscreen .lcp-ambient-layer,
+html.lcp-enabled:has(:fullscreen) .lcp-ambient-layer {
+  display: none !important;
+}
+
+:fullscreen [data-lcp-player],
+[data-lcp-player]:fullscreen,
+html.lcp-enabled:has(:fullscreen) [data-lcp-player] {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.lcp-enabled [data-lcp-player],
+  html.lcp-enabled [data-lcp-ambient-host] > .lcp-ambient-layer {
+    transition-duration: 0ms;
+  }
+}
+
+@media (prefers-contrast: more) {
+  html.lcp-enabled.lcp-soft [data-lcp-player] {
+    outline: 2px solid var(--lcp-page-accent);
+    outline-offset: 1px;
+  }
+}

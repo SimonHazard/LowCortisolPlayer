@@ -1,0 +1,7 @@
+node_modules/
+.output/
+.wxt/
+chrome-extension-dev
+.DS_Store
+*.zip
+coverage/

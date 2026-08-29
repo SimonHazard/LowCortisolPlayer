@@ -1,0 +1,32 @@
+{
+  "name": "low-cortisol-player",
+  "description": "A calmer, softer viewing mode for YouTube and Twitch.",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.14.0",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build --browser chrome --mv3",
+    "zip": "wxt zip --browser chrome --mv3",
+    "check": "biome check . && tsc --noEmit && vitest run",
+    "check:fix": "biome check --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "postinstall": "wxt prepare"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.11",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "@types/node": "26.4.0",
+    "@wxt-dev/module-react": "1.2.2",
+    "typescript": "7.0.2",
+    "vitest": "4.1.11",
+    "wxt": "0.21.4"
+  }
+}

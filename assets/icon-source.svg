@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>LowCortisolPlayer icon</title>
+  <rect width="512" height="512" rx="128" fill="#0c0f12"/>
+  <circle cx="256" cy="256" r="164" fill="#15191d" stroke="#2a3035" stroke-width="8"/>
+  <path d="M164 187c42-50 114-68 174-45 63 24 101 89 91 155-10 71-71 125-143 128-76 3-140-51-151-125-6-40 5-80 29-113Z" fill="#d3a86c"/>
+  <path d="M202 242c22-26 60-36 93-23 34 13 54 48 49 83-6 38-38 67-77 69-41 1-75-28-81-68-3-22 3-43 16-61Z" fill="#0c0f12" opacity=".9"/>
+</svg>

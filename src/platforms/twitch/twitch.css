@@ -1,0 +1,180 @@
+html[data-lcp-platform="twitch"].lcp-enabled {
+  --lcp-twitch-chat-width: clamp(304px, 21vw, 380px);
+}
+
+html[data-lcp-platform="twitch"].lcp-enabled body,
+html[data-lcp-platform="twitch"].lcp-enabled #root {
+  background: var(--lcp-page-bg) !important;
+}
+
+html[data-lcp-platform="twitch"].lcp-focus.lcp-cleanup .top-nav,
+html[data-lcp-platform="twitch"].lcp-focus.lcp-cleanup .channel-root__player,
+html[data-lcp-platform="twitch"].lcp-focus.lcp-cleanup .channel-root__info,
+html[data-lcp-platform="twitch"].lcp-twitch-hide-sidebar [data-a-target="side-nav-bar"],
+html[data-lcp-platform="twitch"].lcp-twitch-hide-sidebar .side-nav {
+  display: none !important;
+}
+
+html[data-lcp-platform="twitch"].lcp-focus .persistent-player {
+  position: fixed !important;
+  z-index: 20 !important;
+  top: 12px !important;
+  right: calc(var(--lcp-twitch-chat-width) + 36px) !important;
+  bottom: 12px !important;
+  left: 12px !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+html[data-lcp-platform="twitch"].lcp-focus [data-lcp-player-host],
+html[data-lcp-platform="twitch"].lcp-focus [data-lcp-player] {
+  max-width: none !important;
+  max-height: none !important;
+  background: var(--lcp-player-stage) !important;
+}
+
+html[data-lcp-platform="twitch"].lcp-focus .persistent-player .tw-aspect,
+html[data-lcp-platform="twitch"].lcp-focus .persistent-player [data-a-target="video-player"],
+html[data-lcp-platform="twitch"].lcp-focus .persistent-player .video-player,
+html[data-lcp-platform="twitch"].lcp-focus .persistent-player .video-player__container,
+html[data-lcp-platform="twitch"].lcp-focus .persistent-player [data-a-target="video-ref"],
+html[data-lcp-platform="twitch"].lcp-focus .persistent-player video {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  padding-bottom: 0 !important;
+}
+
+html[data-lcp-platform="twitch"].lcp-focus .persistent-player video {
+  object-fit: contain !important;
+}
+
+html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+  :is([data-a-target="right-column-chat-bar"], .right-column--beside) {
+  position: fixed !important;
+  z-index: 21 !important;
+  top: 12px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  left: auto !important;
+  display: block !important;
+  width: var(--lcp-twitch-chat-width) !important;
+  height: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  overflow: hidden !important;
+  border: 1px solid color-mix(in srgb, var(--lcp-page-text) 14%, transparent) !important;
+  border-radius: 18px !important;
+  background: var(--lcp-page-mantle) !important;
+  box-shadow: var(--lcp-shadow) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: translateX(0);
+  transition:
+    opacity 180ms var(--lcp-ease-standard),
+    transform 260ms var(--lcp-ease-drawer);
+
+  @starting-style {
+    opacity: 0 !important;
+    transform: translateX(calc(100% + 24px));
+  }
+}
+
+html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+  :is([data-a-target="right-column-chat-bar"], .right-column--beside)
+  .channel-root__right-column {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  transform: none !important;
+}
+
+html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+  :is([data-a-target="right-column-chat-bar"], .right-column--beside)
+  :is(.chat-shell, .stream-chat, [data-a-target="chat-room-component-layout"]) {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  border-radius: inherit !important;
+  background: var(--lcp-page-mantle) !important;
+  color: var(--lcp-page-text) !important;
+}
+
+html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+  :is(
+    .chat-scrollable-area__message-container,
+    [data-test-selector="chat-scrollable-area__message-container"]
+  ) {
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  scrollbar-color: color-mix(in srgb, var(--lcp-page-text) 24%, transparent) transparent;
+}
+
+html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+  :is(.chat-room__content, .chat-shell, .stream-chat) {
+  --color-background-body: var(--lcp-page-mantle);
+  --color-background-base: var(--lcp-page-mantle);
+  --color-background-alt: var(--lcp-page-crust);
+  --color-text-base: var(--lcp-page-text);
+  --color-text-alt: color-mix(in srgb, var(--lcp-page-text) 72%, transparent);
+  --color-fill-brand: var(--lcp-page-accent);
+}
+
+html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+  :is(
+    .tw-root--theme-light,
+    .tw-root--theme-dark,
+    .chat-room,
+    .chat-room__content,
+    .chat-scrollable-area__message-container,
+    [data-test-selector="chat-scrollable-area__message-container"],
+    .chat-input,
+    [data-a-target="chat-input"]
+  ) {
+  --color-background-body: var(--lcp-page-mantle);
+  --color-background-base: var(--lcp-page-mantle);
+  --color-background-alt: var(--lcp-page-crust);
+  --color-background-input: var(--lcp-page-crust);
+  --color-background-float: var(--lcp-page-mantle);
+  --color-text-base: var(--lcp-page-text);
+  --color-text-alt: color-mix(in srgb, var(--lcp-page-text) 72%, transparent);
+  --color-border-base: color-mix(in srgb, var(--lcp-page-text) 14%, transparent);
+  --color-fill-brand: var(--lcp-page-accent);
+  background: var(--lcp-page-mantle) !important;
+  color: var(--lcp-page-text) !important;
+}
+
+@media (max-width: 960px) {
+  html[data-lcp-platform="twitch"].lcp-enabled {
+    --lcp-twitch-chat-width: min(340px, calc(100vw - 24px));
+  }
+
+  html[data-lcp-platform="twitch"].lcp-focus .persistent-player {
+    right: 12px !important;
+  }
+
+  html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+    :is([data-a-target="right-column-chat-bar"], .right-column--beside) {
+    box-shadow: 0 24px 72px rgb(0 31 39 / 54%) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+    :is([data-a-target="right-column-chat-bar"], .right-column--beside) {
+    transform: translateX(0);
+    transition: opacity 160ms ease;
+  }
+}
+
+@media (prefers-contrast: more) {
+  html[data-lcp-platform="twitch"].lcp-twitch-chat-panel
+    :is([data-a-target="right-column-chat-bar"], .right-column--beside) {
+    border-width: 2px !important;
+    border-color: var(--lcp-page-accent) !important;
+  }
+}
